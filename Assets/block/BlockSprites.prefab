@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &160360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432060}
+  - 114: {fileID: 11475640}
+  m_Layer: 0
+  m_Name: BlockSprites
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &432060
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11475640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05bd3b09479c74d45af269a8e683ce36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonSprite:
+  - {fileID: 21300000, guid: 437a073b7d66a0a48bff699828bb484b, type: 3}
+  - {fileID: 21300000, guid: e58f03182ad838f42b5e0ff01ab408a5, type: 3}
+  - {fileID: 21300000, guid: 4b845d744fcf1cd41ac65a0e3454210b, type: 3}
+  - {fileID: 21300000, guid: 69d089bcd4a162b478c4bb53c2a57362, type: 3}
+  - {fileID: 21300000, guid: 164469b8df7dc92418029cc5cbb57436, type: 3}
+  - {fileID: 21300000, guid: 4e41b14a730ab6f40a6ccf6a4843d767, type: 3}
+  - {fileID: 21300000, guid: 18deb85948763c34a8813d1935350f29, type: 3}
+  - {fileID: 21300000, guid: f2fae87f2c2cb7347854642f4a76ed2b, type: 3}
+  - {fileID: 21300000, guid: bb323e63d643aea4183f41c688ef6b99, type: 3}
+  frontSprite:
+  - {fileID: 21300000, guid: de2ea9372e86a4a4e963079f72686ba8, type: 3}
+  - {fileID: 21300000, guid: 287b966c6fa3ddb4491c253df563f415, type: 3}
+  - {fileID: 21300000, guid: 4626af47493c718459a4333dfb26d769, type: 3}
+  front2Sprite: []
+  midSprite:
+  - {fileID: 21300000, guid: dfc3b19d83dce704782177771d8facb4, type: 3}
+  - {fileID: 21300000, guid: c188910708359104c958ba7c0d052755, type: 3}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 160360}
+  m_IsPrefabParent: 1
