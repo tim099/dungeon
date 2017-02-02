@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Building : MonoBehaviour {
+public class Bar : Building {
 
 	// Use this for initialization
 	void Start () {
@@ -12,4 +12,8 @@ public class Building : MonoBehaviour {
 	void Update () {
 	
 	}
+    public override void building_update()
+    {
+        //Debug.Log("bar update!!");
+    }
 }

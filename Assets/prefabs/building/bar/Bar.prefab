@@ -8,8 +8,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487670}
-  - 114: {fileID: 11412460}
-  - 212: {fileID: 21286390}
+  - 95: {fileID: 9524988}
+  - 114: {fileID: 11496008}
+  - 212: {fileID: 21248136}
   m_Layer: 0
   m_Name: Bar
   m_TagString: Building
@@ -29,7 +30,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11412460
+--- !u!95 &9524988
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d8f21fccce2d354296c5874b88911d0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11496008
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -37,10 +55,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 187630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a20593fa023d5547aebdc50d75f6604, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e93cc15cde4ea946a7ab4bd50c38c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &21286390
+--- !u!212 &21248136
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -66,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1098304353
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e0d2eb48a9626d4fa1ec5eb44f1fc56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e2f3538f8b5e88940b58776d67d5fc81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -76,7 +94,16 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e2f3538f8b5e88940b58776d67d5fc81,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: 1098304353
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 187630}

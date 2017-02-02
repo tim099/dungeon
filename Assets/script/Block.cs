@@ -15,7 +15,6 @@ public class Block : MonoBehaviour {
     //public Sprite[]  dungeonSprite;
     // Use this for initialization
     int type,mid_type,front_type,front2_type;
-    int timer;
     public int pos_x, pos_y;
     public void init(int x,int y){
         cur_obj = gameObject;
@@ -73,7 +72,6 @@ public class Block : MonoBehaviour {
     }
     void Start(){
         type = 0;
-        timer = 0;
 
         //type = Random.Range(0, BlockSprites.get().dungeonSprite.Length);
         //set_type(type);
@@ -128,15 +126,10 @@ public class Block : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        timer++;
-        if (timer > 100)
+        if (building != null)
         {
-            timer = 0;
-            //type=Random.Range(0, BlockSprites.get().dungeonSprite.Length);
-            //spriteRenderer.sprite = BlockSprites.get().dungeonSprite[type];
-            //Debug.Log("cur_sprite=" + type);
+            building.building_update();
         }
-
         
     }
 }
