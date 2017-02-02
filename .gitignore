@@ -1,5 +1,6 @@
 *.pdb
 *.exe
+build_Data/
 # =============== #
 # Unity generated #
 # =============== #
