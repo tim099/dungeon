@@ -50,11 +50,17 @@ TagManager:
   - name: mid
     uniqueID: 1625894549
     locked: 0
+  - name: building
+    uniqueID: 1098304353
+    locked: 0
   - name: front2
     uniqueID: 2116922741
     locked: 0
   - name: front
     uniqueID: 1761770791
+    locked: 0
+  - name: front3
+    uniqueID: 4049522183
     locked: 0
   - name: UI2
     uniqueID: 1575527239

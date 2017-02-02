@@ -76,7 +76,7 @@ public class BlockManager : MonoBehaviour {
                 blocks[j, i] = tmp;
             }
         }
-        scale = 0.7f;
+        scale = 0.9f;
         start_pos.x = (size_x - 1) * -0.5f * scale *  block_size.x;
         start_pos.y = -0.5f * scale * block_size.y;//-scale * 10 * block_size.y
         pos.position = new Vector3(start_pos.x, start_pos.y, 0);//

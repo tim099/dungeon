@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Escape))Application.Quit();
         if (Input.GetButtonDown("Fire1")){
-            Debug.Log("x="+Input.mousePosition.x+",y="+ Input.mousePosition.y + ",z=" + Input.mousePosition.z);
+            //Debug.Log("x="+Input.mousePosition.x+",y="+ Input.mousePosition.y + ",z=" + Input.mousePosition.z);
         }
     }
 }

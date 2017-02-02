@@ -111,6 +111,10 @@ public class ResourceManager : MonoBehaviour {
         }
         Block block=BlockManager.instance.find_selected_block(mousePos.x, mousePos.y);
         if (block != null){
+            if (Input.GetMouseButtonDown(0))
+            {
+                block.set_building(BuildingCreator.create_building(BuildingCreator.bar));
+            }
             if (Input.GetMouseButton(0))
             {
                 block.set_front3_type(2);
@@ -121,7 +125,7 @@ public class ResourceManager : MonoBehaviour {
             }
             
             prev_block = block;
-            Debug.Log("find block x=" + block.pos_x + ",y=" + block.pos_y);
+            //Debug.Log("find block x=" + block.pos_x + ",y=" + block.pos_y);
         }
         //GUI.Label(new Rect(Screen.width * start_pos, 55, 20, 20), "width=" + Screen.width+ ",height=" + Screen.height, money_style);
         //"width=" + Screen.width

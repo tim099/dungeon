@@ -10,6 +10,8 @@ public class Block : MonoBehaviour {
     private SpriteR frontsprite;
     private SpriteR front2sprite;
     private SpriteR front3sprite;
+
+    private Building building;
     //public Sprite[]  dungeonSprite;
     // Use this for initialization
     int type,mid_type,front_type,front2_type;
@@ -19,6 +21,7 @@ public class Block : MonoBehaviour {
         cur_obj = gameObject;
         pos_x = x;
         pos_y = y;
+        building = null;
         //Debug.Log("name="+cur_obj.name);
 
         //GameObject obj = GameObject.Find("Front");
@@ -74,6 +77,21 @@ public class Block : MonoBehaviour {
 
         //type = Random.Range(0, BlockSprites.get().dungeonSprite.Length);
         //set_type(type);
+    }
+    public void set_building(Building _building)
+    {
+        Debug.Log("build!!");
+        if (building != null)
+        {
+            Destroy(building);
+            building = null;
+        }
+        building = _building;
+        
+        building.transform.SetParent(gameObject.transform);
+        building.transform.position = gameObject.transform.position;
+
+        building.transform.localScale = gameObject.transform.localScale;
     }
 	public void set_type(int _type){
         type = _type;
