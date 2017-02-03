@@ -111,8 +111,9 @@ public class ResourceManager : MonoBehaviour {
         }
         Block block=BlockManager.instance.find_selected_block(mousePos.x, mousePos.y);
         if (block != null){
-            if (Input.GetMouseButtonDown(0))
-            {
+            if (Input.GetMouseButtonDown(0)) {
+
+                block.set_front2_type(3);
                 block.set_building(BuildingCreator.create_building(BuildingCreator.bar));
             }
             if (Input.GetMouseButton(0))

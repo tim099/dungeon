@@ -29,35 +29,46 @@ public class BlockManager : MonoBehaviour {
         blocks = new Block[size_x, size_y];
         stair_at = new int[size_y];
         Block tmp;
+        int max_width = size_x, min_width = 3<max_width? 3:max_width;
         for (int i = 0; i < size_y; i++)
         {
-            if (i == 0)
-            {
-                stair_at[i] = Random.Range(0, size_x);
-                //Debug.Log("level:" + i + ",cur=" + stair_at[i]);
+            int width= Random.Range(min_width, max_width+1);
+            int start_at = 0;
+            int min = 0;
+            int max = size_x - width;
+            Debug.Log(width);
+            if (i!=0){
+                int del = stair_at[i - 1] - width+1;
+                min = del > 0 ? del:0;
+                int del2 = size_x - width;
+                max = del2<stair_at[i-1]? del2 :stair_at[i-1];
             }
-            else
-            {
-                stair_at[i] = Random.Range(0, size_x-1);
-                if(stair_at[i - 1] <= stair_at[i])
-                {
+            start_at = Random.Range(min, max+1);
+
+            if (i == 0){//first level
+                stair_at[i] = Random.Range(0, width)+start_at;
+                //Debug.Log("level:" + i + ",cur=" + stair_at[i]);
+            }else{
+                stair_at[i] = Random.Range(0,width-1)+start_at;
+                if(stair_at[i - 1]<= stair_at[i]){
                     stair_at[i]++;
                 }
                 //Debug.Log("level:" + i + ",cur=" + stair_at[i] + ",prev=" + stair_at[i - 1]);
             }
-            for (int j = 0; j < size_x; j++)
-            {
+
+            for (int j = 0; j < width; j++){
+                int x = j + start_at;
                 tmp = Instantiate(block, new Vector3(0,0,0), Quaternion.identity) as Block;
                 
-                tmp.init(j,i);
-                tmp.transform.position = new Vector3(block_size.x * j, block_size.y * -i, 0f);
+                tmp.init(x,i);
+                tmp.transform.position = new Vector3(block_size.x * x, block_size.y * -i, 0f);
                 tmp.transform.SetParent(pos);
                 
                 int type=0;
-                if (stair_at[i] == j)
+                if (stair_at[i] == x)
                 {
                     type=BlockSprites.block_stair_down;
-                }else if (i > 0 && (stair_at[i - 1] == j))
+                }else if (i > 0 && (stair_at[i - 1] == x))
                 {
                     //
                     type = BlockSprites.block_stair_up;
@@ -73,10 +84,10 @@ public class BlockManager : MonoBehaviour {
                     }
                 }
                 tmp.set_type(type);
-                blocks[j, i] = tmp;
+                blocks[x, i] = tmp;
             }
         }
-        scale = 0.9f;
+        scale = 0.8f;
         start_pos.x = (size_x - 1) * -0.5f * scale *  block_size.x;
         start_pos.y = -0.5f * scale * block_size.y;//-scale * 10 * block_size.y
         pos.position = new Vector3(start_pos.x, start_pos.y, 0);//

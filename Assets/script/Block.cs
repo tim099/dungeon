@@ -58,6 +58,7 @@ public class Block : MonoBehaviour {
         front2sprite.set_sorting_layer("front2");
         front2sprite.transform.SetParent(cur_obj.transform);
         front2_type = Random.Range(0, BlockSprites.get().front2Sprite.Length);
+        //front2_type = 3;
         front2sprite.set_sprite(BlockSprites.get().front2Sprite[front2_type]);
 
         front3sprite = SpriteR.new_sprite();
@@ -126,8 +127,7 @@ public class Block : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        if (building != null)
-        {
+        if (building != null){
             building.building_update();
         }
         
