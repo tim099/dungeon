@@ -5,13 +5,14 @@ public class Block : MonoBehaviour {
     //private SpriteRenderer spriteRenderer;
     //Front front;
     GameObject cur_obj;
-    private SpriteR blocksprite;
+    //private SpriteR blocksprite;
     private SpriteR midsprite;
     private SpriteR frontsprite;
     private SpriteR front2sprite;
     private SpriteR front3sprite;
 
     private Building building;
+    private Terrian terrian;
     //public Sprite[]  dungeonSprite;
     // Use this for initialization
     int type,mid_type,front_type,front2_type;
@@ -21,6 +22,7 @@ public class Block : MonoBehaviour {
         pos_x = x;
         pos_y = y;
         building = null;
+        terrian = null;
         //Debug.Log("name="+cur_obj.name);
 
         //GameObject obj = GameObject.Find("Front");
@@ -38,9 +40,9 @@ public class Block : MonoBehaviour {
         front.set_sprite(BlockSprites.get().frontSprite[type]);
         */
 
-        blocksprite = SpriteR.new_sprite();
-        blocksprite.set_sorting_layer("back");
-        blocksprite.transform.SetParent(cur_obj.transform);
+        //blocksprite = SpriteR.new_sprite();
+        //blocksprite.set_sorting_layer("back");
+        //blocksprite.transform.SetParent(cur_obj.transform);
 
         midsprite = SpriteR.new_sprite();
         midsprite.set_sorting_layer("mid");
@@ -77,13 +79,11 @@ public class Block : MonoBehaviour {
         //type = Random.Range(0, BlockSprites.get().dungeonSprite.Length);
         //set_type(type);
     }
-    public void set_building(Building _building)
-    {
+    public void set_building(Building _building){
         //Debug.Log("build!!");
         if (building != null)
         {
-            Debug.Log("Destroy(building)!!");
-
+            //Debug.Log("Destroy(building)!!");
             Destroy(building.transform.gameObject);
             building = null;
         }
@@ -94,11 +94,27 @@ public class Block : MonoBehaviour {
 
         building.transform.localScale = gameObject.transform.localScale;
     }
+    /*
 	public void set_type(int _type){
         type = _type;
 
         blocksprite.set_sprite(BlockSprites.get().dungeonSprite[type]);
         //spriteRenderer.sprite = BlockSprites.get().dungeonSprite[type];
+    }
+    */
+    public void set_terrian(Terrian _terrian)
+    {
+        if (terrian!=null)
+        {
+            Destroy(terrian.transform.gameObject);
+            terrian = null;
+        }
+        terrian = _terrian;//TerrianCreator.create_terrian(type)
+
+        terrian.transform.SetParent(gameObject.transform);
+        terrian.transform.position = gameObject.transform.position;
+
+        terrian.transform.localScale = gameObject.transform.localScale;
     }
     public void set_front_type(int _type)
     {

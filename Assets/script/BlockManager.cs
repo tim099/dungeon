@@ -67,23 +67,22 @@ public class BlockManager : MonoBehaviour {
                 int type=0;
                 if (stair_at[i] == x)
                 {
-                    type=BlockSprites.block_stair_down;
-                }else if (i > 0 && (stair_at[i - 1] == x))
-                {
-                    //
-                    type = BlockSprites.block_stair_up;
+                    type= TerrianCreator.stair_down;
+                }else if (i > 0 && (stair_at[i - 1] == x)){
+                    type = TerrianCreator.stair_up;
                     //Debug.Log("level:" + i + ",at="+j+ ",real=" + stair_at[i - 1]);
                     //type = BlockSprites.block_stair_up;
                 }
                 else
                 {
-                    type = Random.Range(0, BlockSprites.get().dungeonSprite.Length);
-                    if (type == BlockSprites.block_stair_down|| type == BlockSprites.block_stair_up)
+                    type = Random.Range(0, TerrianCreator.instance.terrians.Length);
+                    if (type == TerrianCreator.stair_down || type == TerrianCreator.stair_up)
                     {
                         type = 0;
                     }
                 }
-                tmp.set_type(type);
+                //tmp.set_type(type);
+                tmp.set_terrian(TerrianCreator.create_terrian(type));
                 blocks[x, i] = tmp;
             }
         }

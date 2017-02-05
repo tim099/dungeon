@@ -4,7 +4,7 @@ using System.Collections;
 public class ResourceManager : MonoBehaviour {
 
     private GUIStyle money_style;
-    long money, food, water, crystal, herb;
+    public long money, food, water, crystal, herb;
 
     Camera main_camera = null;
     public Sprite moneySpr,foodSpr,waterSpr,crystalSpr,herbSpr;
@@ -21,6 +21,7 @@ public class ResourceManager : MonoBehaviour {
         water = 1023;
         crystal = 333;
         herb = 4343;
+        
         GameObject obj = GameObject.Find("MainCamera");
         if (obj != null) main_camera = obj.GetComponent<Camera>();
         gameObject.transform.SetParent(main_camera.transform);
@@ -103,8 +104,8 @@ public class ResourceManager : MonoBehaviour {
         GUI.Label(new Rect(Screen.width * (start_pos + (i++ * delta)), 15, 20, 20), convert_to_str(water), money_style);
         GUI.Label(new Rect(Screen.width * (start_pos + (i++ * delta)), 15, 20, 20), convert_to_str(crystal), money_style);
         GUI.Label(new Rect(Screen.width * (start_pos + (i++ * delta)), 15, 20, 20), convert_to_str(herb), money_style);
+        GUI.Label(new Rect(Screen.width * (start_pos + (i++ * delta)), 15, 20, 20), "day:"+Gameloop.instance.day, money_style);
 
-        
         //GUI.Label(new Rect(Screen.width * start_pos, 55, 20, 20), "width=" + Screen.width+ ",height=" + Screen.height, money_style);
         //"width=" + Screen.width
     }

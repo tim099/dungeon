@@ -3,15 +3,14 @@ using System.Collections;
 
 public class BlockSprites : MonoBehaviour {
     static BlockSprites instance=null;
-    public Sprite[] dungeonSprite;
+    //public Sprite[] dungeonSprite;
     public Sprite[] frontSprite;
     public Sprite[] front2Sprite;
     public Sprite[] midSprite;
     public Sprite transparent;
     public Sprite high_light;
     public Sprite high_light2;
-    public static int block_stair_down=2;
-    public static int block_stair_up=3;
+
     // Use this for initialization
     void Start () {
         instance = this;

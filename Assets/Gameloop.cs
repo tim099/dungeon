@@ -9,8 +9,15 @@ public class Gameloop : MonoBehaviour {
     public UnityEngine.UI.Button buildButton2;
     public UnityEngine.UI.Button buildExit;
     Camera main_camera = null;
+    public int day;
+    public static Gameloop instance = null;
 
+    void Awake()
+    {
+        instance = this;
+    }
     void Start () {
+        day = 0;
         GameObject obj = GameObject.Find("MainCamera");
         if (obj != null) main_camera = obj.GetComponent<Camera>();
         buildbuttons.SetActive(false);
@@ -86,5 +93,6 @@ public class Gameloop : MonoBehaviour {
             prev_block = block;
             //Debug.Log("find block x=" + block.pos_x + ",y=" + block.pos_y);
         }
+
     }
 }
