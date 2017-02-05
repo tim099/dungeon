@@ -7,8 +7,8 @@ public class ResourceManager : MonoBehaviour {
     long money, food, water, crystal, herb;
 
     Camera main_camera = null;
-    //public Sprite moneySpr, foodSpr, waterSpr, crystalSpr,herbSpr;
-    //private SpriteR money_sprite, food_sprite, water_sprite, crystal_sprite,herb_sprite;
+    public Sprite moneySpr,foodSpr,waterSpr,crystalSpr,herbSpr;
+    private SpriteR money_sprite, food_sprite, water_sprite, crystal_sprite,herb_sprite;
     public static ResourceManager instance = null;
     
     void Awake(){
@@ -25,9 +25,9 @@ public class ResourceManager : MonoBehaviour {
         if (obj != null) main_camera = obj.GetComponent<Camera>();
         gameObject.transform.SetParent(main_camera.transform);
 
-        /*
+        ///*
         int cur_at = 0;
-        float start_pos = -8.2f, delta = 3.47f;
+        float start_pos = -8.2f, delta = 2.77f;
         money_sprite = SpriteR.new_sprite();
         money_sprite.set_sorting_layer("UI");
         money_sprite.transform.SetParent(gameObject.transform);
@@ -57,9 +57,9 @@ public class ResourceManager : MonoBehaviour {
         herb_sprite.transform.SetParent(gameObject.transform);
         herb_sprite.transform.position = new Vector3(start_pos + (cur_at++ * delta), 4.5f, 0);
         herb_sprite.set_sprite(herbSpr);
-        */
+        //*/
         money_style = new GUIStyle();
-        money_style.fontSize = (int)(40.0*(Screen.width/1280.0));
+        money_style.fontSize = (int)(30.0*(Screen.width/1280.0));
         money_style.normal.textColor = Color.yellow;
 
         /*
@@ -96,7 +96,7 @@ public class ResourceManager : MonoBehaviour {
     }
     void OnGUI(){
         //Debug.Log("width=" + Screen.width);
-        float start_pos=0.07f,delta=0.192f;
+        float start_pos=0.07f,delta=0.152f;
         int i=0;
         GUI.Label(new Rect(Screen.width* (start_pos + (i++ * delta)), 15,20, 20), convert_to_str(money), money_style);
         GUI.Label(new Rect(Screen.width * (start_pos + (i++ * delta)), 15, 20, 20), convert_to_str(food), money_style);
