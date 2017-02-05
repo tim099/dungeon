@@ -79,10 +79,12 @@ public class Block : MonoBehaviour {
     }
     public void set_building(Building _building)
     {
-        Debug.Log("build!!");
+        //Debug.Log("build!!");
         if (building != null)
         {
-            Destroy(building);
+            Debug.Log("Destroy(building)!!");
+
+            Destroy(building.transform.gameObject);
             building = null;
         }
         building = _building;

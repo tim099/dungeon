@@ -36,7 +36,7 @@ public class BlockManager : MonoBehaviour {
             int start_at = 0;
             int min = 0;
             int max = size_x - width;
-            Debug.Log(width);
+            //Debug.Log(width);
             if (i!=0){
                 int del = stair_at[i - 1] - width+1;
                 min = del > 0 ? del:0;

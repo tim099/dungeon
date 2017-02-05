@@ -7,6 +7,7 @@ public class BuildingCreator : MonoBehaviour {
     public GameObject[] buildings;
     static BuildingCreator instance = null;
     public static int bar = 0;
+    public static int field = 1;
     // Use this for initialization
     void Awake()
     {
