@@ -12,6 +12,7 @@ public class Gameloop : MonoBehaviour {
     public Button buildExit;
     Camera main_camera = null;
     public int day;
+    int day_loop;
     public static Gameloop instance = null;
 
     void Awake()
@@ -20,11 +21,14 @@ public class Gameloop : MonoBehaviour {
     }
     void Start () {
         day = 0;
+        day_loop = 0;
         GameObject obj = GameObject.Find("MainCamera");
         if (obj != null) main_camera = obj.GetComponent<Camera>();
         buildbuttons.SetActive(false);
         buildButton[0].GetComponent<Button>().onClick.AddListener(ClickbuildButton1);
         buildButton[1].GetComponent<Button>().onClick.AddListener(ClickbuildButton2);
+        buildButton[2].GetComponent<Button>().onClick.AddListener(ClickbuildButton3);
+        buildButton[3].GetComponent<Button>().onClick.AddListener(ClickbuildButton4);
         buildExit.GetComponent<Button>().onClick.AddListener(ClickbuildExit);
         prev_block = null;
         selected_block = null;
@@ -45,6 +49,16 @@ public class Gameloop : MonoBehaviour {
     void ClickbuildButton2(){
         selected_block.set_building(BuildingCreator.create_building(buildtex[1].text));
         //InputManager.instance.left_click = false;
+        deselect_block();
+    }
+    void ClickbuildButton3()
+    {
+        selected_block.set_building(BuildingCreator.create_building(buildtex[2].text));
+        deselect_block();
+    }
+    void ClickbuildButton4()
+    {
+        selected_block.set_building(BuildingCreator.create_building(buildtex[3].text));
         deselect_block();
     }
     void init_build_button(Block block)
@@ -99,5 +113,13 @@ public class Gameloop : MonoBehaviour {
             //Debug.Log("find block x=" + block.pos_x + ",y=" + block.pos_y);
         }
 
+
+        day_loop++;
+        if (day_loop > 300)
+        {
+            BlockManager.instance.day_update();
+            day_loop = 0;
+            day++;
+        }
     }
 }

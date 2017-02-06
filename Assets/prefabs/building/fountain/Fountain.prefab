@@ -1,53 +1,57 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &143334
+--- !u!1 &181462
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 449628}
-  - 114: {fileID: 11438398}
-  - 212: {fileID: 21271630}
+  - 4: {fileID: 476528}
+  - 114: {fileID: 11481126}
+  - 212: {fileID: 21255912}
   m_Layer: 0
-  m_Name: Cave
-  m_TagString: Untagged
+  m_Name: Fountain
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &449628
+--- !u!4 &476528
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143334}
+  m_GameObject: {fileID: 181462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 405.1996, y: 204.43105, z: 0}
+  m_LocalPosition: {x: 0.020000458, y: 4.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11438398
+--- !u!114 &11481126
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143334}
+  m_GameObject: {fileID: 181462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ba87ea201faf9841bf749537d61c6d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a20593fa023d5547aebdc50d75f6604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildable:
-  - Bar
---- !u!212 &21271630
+  building_name: Fountain
+  money_yield: 0
+  food_yield: 0
+  water_yield: 10
+  crystal_yield: 0
+  herb_yield: 0
+--- !u!212 &21255912
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143334}
+  m_GameObject: {fileID: 181462}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -66,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1576677309
+  m_SortingLayerID: 1098304353
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 437a073b7d66a0a48bff699828bb484b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 509070c17808dec489a330a006885eee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -80,14 +84,14 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
-      propertyPath: buildable.Array.size
-      value: 1
+      propertyPath: building_name
+      value: Fountain
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: buildable.Array.data[0]
-      value: Bar
+      propertyPath: water_yield
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 143334}
+  m_RootGameObject: {fileID: 181462}
   m_IsPrefabParent: 1

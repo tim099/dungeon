@@ -143,10 +143,18 @@ public class Block : MonoBehaviour {
         
     }
     // Update is called once per frame
+    public void day_update()
+    {
+        if (building != null)
+        {
+            building.day_update();
+        }
+    }
     void Update () {
+        /*
         if (building != null){
             building.building_update();
         }
-        
+        */
     }
 }

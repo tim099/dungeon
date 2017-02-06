@@ -16,11 +16,11 @@ public class ResourceManager : MonoBehaviour {
     }
     void Start () {
         
-        money = 1000;
-        food = 1005;
-        water = 1023;
-        crystal = 333;
-        herb = 4343;
+        money = 10;
+        food = 10;
+        water = 10;
+        crystal = 10;
+        herb = 10;
         
         GameObject obj = GameObject.Find("MainCamera");
         if (obj != null) main_camera = obj.GetComponent<Camera>();

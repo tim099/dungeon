@@ -113,7 +113,17 @@ public class BlockManager : MonoBehaviour {
         dungeon = null;
         generate_dungeon(9,30);
     }
-	
+	public void day_update()
+    {
+        for(int i = 0; i < size_y;i++)
+        {
+            for(int j = 0; j < size_x; j++)
+            {
+                Block cur_block=blocks[j, i];
+                if(cur_block!=null)cur_block.day_update();
+            }
+        }
+    }
 	// Update is called once per frame
 	void Update () {
 	
