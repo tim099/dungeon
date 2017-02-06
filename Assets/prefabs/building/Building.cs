@@ -4,10 +4,13 @@ using System.Collections;
 public class Building : MonoBehaviour {
 
     // Use this for initialization
+    public string building_name;
+    /*
     public virtual string get_building_name()
     {
         return "building_name";
     }
+    */
     void Start () {
 	
 	}

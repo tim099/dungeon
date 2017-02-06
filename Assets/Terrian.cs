@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Terrian : MonoBehaviour {
-
+    public string[] buildable;
 	// Use this for initialization
 	void Start () {
 	

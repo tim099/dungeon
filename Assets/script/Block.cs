@@ -12,10 +12,10 @@ public class Block : MonoBehaviour {
     private SpriteR front3sprite;
 
     private Building building;
-    private Terrian terrian;
+    public Terrian terrian;
     //public Sprite[]  dungeonSprite;
     // Use this for initialization
-    int type,mid_type,front_type,front2_type;
+    int mid_type,front_type,front2_type;
     public int pos_x, pos_y;
     public void init(int x,int y){
         cur_obj = gameObject;
@@ -74,13 +74,12 @@ public class Block : MonoBehaviour {
         //sprite = GetComponent<SpriteR>();
     }
     void Start(){
-        type = 0;
-
         //type = Random.Range(0, BlockSprites.get().dungeonSprite.Length);
         //set_type(type);
     }
     public void set_building(Building _building){
         //Debug.Log("build!!");
+        if (_building == null) return;
         if (building != null)
         {
             //Debug.Log("Destroy(building)!!");

@@ -865,9 +865,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Bar
-
-'
+  m_Text: Bar
 --- !u!114 &11425382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1109,9 +1107,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Field
-
-'
+  m_Text: Field
 --- !u!114 &11439988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1289,8 +1285,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildbuttons: {fileID: 168138}
-  buildButton1: {fileID: 11471126}
-  buildButton2: {fileID: 11488842}
+  buildButton:
+  - {fileID: 11471126}
+  - {fileID: 11488842}
+  buildtex:
+  - {fileID: 11424602}
+  - {fileID: 11438912}
   buildExit: {fileID: 11436334}
   day: 0
 --- !u!114 &11474244

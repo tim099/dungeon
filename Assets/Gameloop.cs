@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Gameloop : MonoBehaviour {
     Block prev_block,selected_block;
     // Use this for initialization
     public GameObject buildbuttons;
-    public UnityEngine.UI.Button buildButton1;
-    public UnityEngine.UI.Button buildButton2;
-    public UnityEngine.UI.Button buildExit;
+    public Button[] buildButton;
+    //public Button buildButton2;
+    public Text[] buildtex;
+    public Button buildExit;
     Camera main_camera = null;
     public int day;
     public static Gameloop instance = null;
@@ -21,9 +23,9 @@ public class Gameloop : MonoBehaviour {
         GameObject obj = GameObject.Find("MainCamera");
         if (obj != null) main_camera = obj.GetComponent<Camera>();
         buildbuttons.SetActive(false);
-        buildButton1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(ClickbuildButton1);
-        buildButton2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(ClickbuildButton2);
-        buildExit.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(ClickbuildExit);
+        buildButton[0].GetComponent<Button>().onClick.AddListener(ClickbuildButton1);
+        buildButton[1].GetComponent<Button>().onClick.AddListener(ClickbuildButton2);
+        buildExit.GetComponent<Button>().onClick.AddListener(ClickbuildExit);
         prev_block = null;
         selected_block = null;
     }
@@ -33,25 +35,33 @@ public class Gameloop : MonoBehaviour {
         selected_block = null;
         buildbuttons.SetActive(false);
     }
-    void ClickbuildExit()
-    {
+    void ClickbuildExit(){
         deselect_block();
     }
-    void ClickbuildButton1()
-    {
-        //InputManager.instance.left_click = false;
-        selected_block.set_building(BuildingCreator.create_building(0));
+    void ClickbuildButton1(){
+        selected_block.set_building(BuildingCreator.create_building(buildtex[0].text));
         deselect_block();
-        Debug.Log("You have clicked the button1!");
     }
-    void ClickbuildButton2()
-    {
-        selected_block.set_building(BuildingCreator.create_building(1));
+    void ClickbuildButton2(){
+        selected_block.set_building(BuildingCreator.create_building(buildtex[1].text));
         //InputManager.instance.left_click = false;
         deselect_block();
-
-
-        Debug.Log("You have clicked the button2!");
+    }
+    void init_build_button(Block block)
+    {
+        buildbuttons.SetActive(true);
+        for (int i = 0; i < buildButton.Length; i++)
+        {
+            if (block.terrian.buildable.Length > i)
+            {
+                buildButton[i].transform.gameObject.SetActive(true);
+                buildtex[i].text = block.terrian.buildable[i];
+            }
+            else
+            {
+                buildButton[i].transform.gameObject.SetActive(false);
+            }
+        }
     }
     // Update is called once per frame
     void Update () {
@@ -77,19 +87,14 @@ public class Gameloop : MonoBehaviour {
 
                     block.set_front2_type(3);
                     selected_block = block;
-                    buildbuttons.SetActive(true);
+                    //buildbuttons.SetActive(true);
+                    init_build_button(selected_block);
                 }
                 //block.set_building(BuildingCreator.create_building(Random.Range(0,2)));
                 //block.transform.gameObject.SetActive(false);
             }
 
-
             block.set_front3_type(1);
-            
-
-            
-            
-
             prev_block = block;
             //Debug.Log("find block x=" + block.pos_x + ",y=" + block.pos_y);
         }

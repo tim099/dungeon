@@ -124,6 +124,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11473034, guid: 4b1cea16f064c1f44ba24e1b2f760fd6, type: 2}
+      propertyPath: buildtex1
+      value: 
+      objectReference: {fileID: 1206364239}
+    - target: {fileID: 11424602, guid: 4b1cea16f064c1f44ba24e1b2f760fd6, type: 2}
+      propertyPath: m_Text
+      value: Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438912, guid: 4b1cea16f064c1f44ba24e1b2f760fd6, type: 2}
+      propertyPath: m_Text
+      value: Field
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b1cea16f064c1f44ba24e1b2f760fd6, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1206364239 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11424602, guid: 4b1cea16f064c1f44ba24e1b2f760fd6,
+    type: 2}
+  m_PrefabInternal: {fileID: 997569613}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
