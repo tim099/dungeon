@@ -9,12 +9,12 @@ public class Gameloop : MonoBehaviour {
     public Button[] buildButton;
     //public Button buildButton2;
     public Text[] buildtex;
-    public Text date_text;
+    public Text year_text, month_text,day_text;
     public Button buildExit;
     Camera main_camera = null;
     public Slider time_slider;
-    public int day,month,game_speed;
-    int day_loop,day_cycle, month_cycle;
+    public int day,month,year,game_speed;
+    int day_loop,day_cycle, month_cycle,year_cycle;
     public bool pause;
     public static Gameloop instance = null;
 
@@ -28,10 +28,13 @@ public class Gameloop : MonoBehaviour {
     void Start () {
         pause = false;
         day = 1;
-        day_loop = 0;
-        day_cycle = 1000;
         month = 1;
+        year = 1;
+        day_loop = 0;
+        day_cycle = 640;
+        
         month_cycle = 30;
+        year_cycle = 12;
         mode = mode_dungeon;
         prev_mode = mode;
         game_speed = 0;
@@ -153,7 +156,7 @@ public class Gameloop : MonoBehaviour {
                     day_loop+=2;
                     break;
                 case 2:
-                    day_loop+=4;
+                    day_loop+=32;
                     break;
             }
             
@@ -165,6 +168,9 @@ public class Gameloop : MonoBehaviour {
             }
         }
         time_slider.value = (float)day_loop / (float)day_cycle;
+        year_text.text = "year:" + year;
+        month_text.text = "month:" + month;
+        day_text.text = "day:" + day;
     }
     void day_update()
     {
@@ -176,11 +182,19 @@ public class Gameloop : MonoBehaviour {
             month_update();
             day = 1;
         }
-        date_text.text = "date:" + Gameloop.instance.month + "/" + Gameloop.instance.day;
-        //month
     }
     void month_update()
     {
         month++;
+        if (month > year_cycle)
+        {
+            year_update();
+            month = 1;
+        }
     }
+    void year_update()
+    {
+        year++;
+    }
+
 }
