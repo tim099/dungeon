@@ -3,6 +3,8 @@ using System.Collections;
 
 public class TerrianCreator : MonoBehaviour {
     public GameObject[] terrians;
+    public GameObject[] terrians2;
+    public GameObject[] terrians3;
     public static TerrianCreator instance = null;
     public static int cave = 0;
     public static int water = 1;

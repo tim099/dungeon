@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+using UnityEngine.EventSystems;
 public class Gameloop : MonoBehaviour {
     Block prev_block,selected_block;
     // Use this for initialization
@@ -9,19 +9,32 @@ public class Gameloop : MonoBehaviour {
     public Button[] buildButton;
     //public Button buildButton2;
     public Text[] buildtex;
+    public Text date_text;
     public Button buildExit;
     Camera main_camera = null;
-    public int day;
-    int day_loop;
+    public Slider time_slider;
+    public int day,month,game_speed;
+    int day_loop,day_cycle, month_cycle;
+    public bool pause;
     public static Gameloop instance = null;
 
+    public const int mode_dungeon = 0, mode_trade = 1;
+    public int mode,prev_mode;
     void Awake()
     {
+
         instance = this;
     }
     void Start () {
-        day = 0;
+        pause = false;
+        day = 1;
         day_loop = 0;
+        day_cycle = 1000;
+        month = 1;
+        month_cycle = 30;
+        mode = mode_dungeon;
+        prev_mode = mode;
+        game_speed = 0;
         GameObject obj = GameObject.Find("MainCamera");
         if (obj != null) main_camera = obj.GetComponent<Camera>();
         buildbuttons.SetActive(false);
@@ -32,6 +45,15 @@ public class Gameloop : MonoBehaviour {
         buildExit.GetComponent<Button>().onClick.AddListener(ClickbuildExit);
         prev_block = null;
         selected_block = null;
+    }
+    public static void undo_set_mode()
+    {
+        instance.mode= instance.prev_mode;
+    }
+    public static void set_mode(int _mode)
+    {
+        instance.prev_mode = instance.mode;
+        instance.mode = _mode;
     }
     void deselect_block()
     {
@@ -93,7 +115,9 @@ public class Gameloop : MonoBehaviour {
         }
         Block block = BlockManager.instance.find_selected_block(mousePos.x, mousePos.y);
         if (block != null){
-            if (InputManager.get_left_click()){
+            if (InputManager.get_left_click()&& mode==mode_dungeon&&
+                InputManager.instance.collide_object == null&& !EventSystem.current.IsPointerOverGameObject())
+            {
                 if (!selected_block){
                     main_camera.transform.position = new Vector3(block.transform.position.x,block.transform.position.y,-10);
                     //deselect_block();
@@ -113,13 +137,50 @@ public class Gameloop : MonoBehaviour {
             //Debug.Log("find block x=" + block.pos_x + ",y=" + block.pos_y);
         }
 
+        game_update();
 
-        day_loop++;
-        if (day_loop > 300)
+    }
+    void game_update()
+    {
+        if (!pause)
         {
-            BlockManager.instance.day_update();
-            day_loop = 0;
-            day++;
+            switch (game_speed)
+            {
+                case 0:
+                    day_loop++;
+                    break;
+                case 1:
+                    day_loop+=2;
+                    break;
+                case 2:
+                    day_loop+=4;
+                    break;
+            }
+            
+            if (day_loop > day_cycle)
+            {
+                day_update();
+
+                day_loop = 0;
+            }
         }
+        time_slider.value = (float)day_loop / (float)day_cycle;
+    }
+    void day_update()
+    {
+        
+        BlockManager.instance.day_update();
+        day++;
+        if (day > month_cycle)
+        {
+            month_update();
+            day = 1;
+        }
+        date_text.text = "date:" + Gameloop.instance.month + "/" + Gameloop.instance.day;
+        //month
+    }
+    void month_update()
+    {
+        month++;
     }
 }

@@ -36,6 +36,7 @@ public class BlockManager : MonoBehaviour {
             int start_at = 0;
             int min = 0;
             int max = size_x - width;
+
             //Debug.Log(width);
             if (i!=0){
                 int del = stair_at[i - 1] - width+1;
@@ -44,11 +45,20 @@ public class BlockManager : MonoBehaviour {
                 max = del2<stair_at[i-1]? del2 :stair_at[i-1];
             }
             start_at = Random.Range(min, max+1);
-
+            if (i == 0)
+            {
+                start_at = 0;
+                width = 9;
+            }
             if (i == 0){//first level
-                stair_at[i] = Random.Range(0, width)+start_at;
+                stair_at[i] = Random.Range(0, width-1)+start_at;
+                if (width / 2 <= stair_at[i])
+                {
+                    stair_at[i]++;
+                }
                 //Debug.Log("level:" + i + ",cur=" + stair_at[i]);
-            }else{
+            }
+            else{
                 stair_at[i] = Random.Range(0,width-1)+start_at;
                 if(stair_at[i - 1]<= stair_at[i]){
                     stair_at[i]++;
@@ -65,10 +75,17 @@ public class BlockManager : MonoBehaviour {
                 tmp.transform.SetParent(pos);
                 
                 int type=0;
+                
                 if (stair_at[i] == x)
                 {
                     type= TerrianCreator.stair_down;
                 }else if (i > 0 && (stair_at[i - 1] == x)){
+                    type = TerrianCreator.stair_up;
+                    //Debug.Log("level:" + i + ",at="+j+ ",real=" + stair_at[i - 1]);
+                    //type = BlockSprites.block_stair_up;
+                }
+                else if (i == 0&&(j==width/2)){
+
                     type = TerrianCreator.stair_up;
                     //Debug.Log("level:" + i + ",at="+j+ ",real=" + stair_at[i - 1]);
                     //type = BlockSprites.block_stair_up;
@@ -111,7 +128,7 @@ public class BlockManager : MonoBehaviour {
         size_x = 4;
         size_y = 4;
         dungeon = null;
-        generate_dungeon(9,30);
+        generate_dungeon(9,60);
     }
 	public void day_update()
     {

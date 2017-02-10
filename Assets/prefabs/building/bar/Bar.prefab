@@ -60,8 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building_name: Bar
   money_yield: 10
-  food_yield: 0
-  water_yield: 0
+  food_yield: -2
+  water_yield: -4
   crystal_yield: 0
   herb_yield: 0
 --- !u!212 &21248136
@@ -117,6 +117,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: money_yield
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: water_yield
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: food_yield
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

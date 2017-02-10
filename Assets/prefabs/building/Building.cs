@@ -18,11 +18,19 @@ public class Building : MonoBehaviour {
 	}
     public void day_update()
     {
-        ResourceManager.instance.money += money_yield;
-        ResourceManager.instance.food += food_yield;
-        ResourceManager.instance.water += water_yield;
-        ResourceManager.instance.crystal += crystal_yield;
-        ResourceManager.instance.herb += herb_yield;
+        if(ResourceManager.instance.money + money_yield>=0&&
+            ResourceManager.instance.food + food_yield>=0&&
+            ResourceManager.instance.water + water_yield>=0&&
+            ResourceManager.instance.crystal + crystal_yield>=0&&
+            ResourceManager.instance.herb + herb_yield >= 0){
+
+            ResourceManager.instance.money += money_yield;
+            ResourceManager.instance.food += food_yield;
+            ResourceManager.instance.water += water_yield;
+            ResourceManager.instance.crystal += crystal_yield;
+            ResourceManager.instance.herb += herb_yield;
+        }
+
     }
     // Update is called once per frame
     void Update () {

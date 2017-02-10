@@ -60,8 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building_name: Field
   money_yield: 0
-  food_yield: 15
-  water_yield: 0
+  food_yield: 10
+  water_yield: -3
   crystal_yield: 0
   herb_yield: 0
 --- !u!212 &21267538
@@ -107,7 +107,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: food_yield
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: water_yield
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

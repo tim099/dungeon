@@ -59,10 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building_name: CrystalMine
-  money_yield: 0
+  money_yield: -3
   food_yield: 0
   water_yield: 0
-  crystal_yield: 5
+  crystal_yield: 10
   herb_yield: 0
 --- !u!212 &21201694
 SpriteRenderer:
@@ -103,7 +103,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: crystal_yield
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: money_yield
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

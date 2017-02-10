@@ -39,11 +39,6 @@ public class Block : MonoBehaviour {
         type = Random.Range(0, BlockSprites.get().frontSprite.Length);
         front.set_sprite(BlockSprites.get().frontSprite[type]);
         */
-
-        //blocksprite = SpriteR.new_sprite();
-        //blocksprite.set_sorting_layer("back");
-        //blocksprite.transform.SetParent(cur_obj.transform);
-
         midsprite = SpriteR.new_sprite();
         midsprite.set_sorting_layer("mid");
         midsprite.transform.SetParent(cur_obj.transform);
@@ -59,8 +54,8 @@ public class Block : MonoBehaviour {
         front2sprite = SpriteR.new_sprite();
         front2sprite.set_sorting_layer("front2");
         front2sprite.transform.SetParent(cur_obj.transform);
-        front2_type = Random.Range(0, BlockSprites.get().front2Sprite.Length);
-        //front2_type = 3;
+        //front2_type = Random.Range(0, BlockSprites.get().front2Sprite.Length);
+        front2_type = 1;
         front2sprite.set_sprite(BlockSprites.get().front2Sprite[front2_type]);
 
         front3sprite = SpriteR.new_sprite();
@@ -83,7 +78,7 @@ public class Block : MonoBehaviour {
         if (building != null)
         {
             //Debug.Log("Destroy(building)!!");
-            Destroy(building.transform.gameObject);
+            Destroy(building.gameObject);
             building = null;
         }
         building = _building;

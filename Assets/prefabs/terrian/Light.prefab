@@ -43,8 +43,8 @@ MonoBehaviour:
   buildable:
   - Field
   - Bar
-  - Bar
-  - Field
+  - HerbFarm
+  - Fountain
 --- !u!212 &21293308
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -96,7 +96,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: buildable.Array.data[3]
-      value: Field
+      value: Fountain
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: buildable.Array.data[2]
+      value: HerbFarm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
