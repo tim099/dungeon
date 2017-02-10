@@ -10,7 +10,7 @@ public class Inn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (InputManager.instance.collide_object != null &&
+        if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() &&
         InputManager.instance.collide_object == gameObject)
         {
             GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);

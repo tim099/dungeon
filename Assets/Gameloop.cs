@@ -16,6 +16,7 @@ public class Gameloop : MonoBehaviour {
     public int day,month,year,game_speed;
     int day_loop,day_cycle, month_cycle,year_cycle;
     public bool pause;
+    public bool prev_pause;
     public static Gameloop instance = null;
 
     public const int mode_dungeon = 0, mode_trade = 1;
@@ -27,6 +28,7 @@ public class Gameloop : MonoBehaviour {
     }
     void Start () {
         pause = false;
+        prev_pause = pause;
         day = 1;
         month = 1;
         year = 1;
@@ -48,6 +50,15 @@ public class Gameloop : MonoBehaviour {
         buildExit.GetComponent<Button>().onClick.AddListener(ClickbuildExit);
         prev_block = null;
         selected_block = null;
+    }
+    public static void pause_game()
+    {
+        instance.prev_pause = instance.pause;
+        instance.pause = true;
+    }
+    public static void unpause_game()
+    {
+        instance.pause = instance.prev_pause;
     }
     public static void undo_set_mode()
     {

@@ -6,6 +6,7 @@ public class Building : MonoBehaviour {
     // Use this for initialization
     public string building_name;
     public long money_yield, food_yield, water_yield, crystal_yield, herb_yield;
+    long[] resource_yield = new long[4];
     //public int 
     /*
     public virtual string get_building_name()
@@ -14,23 +15,35 @@ public class Building : MonoBehaviour {
     }
     */
     void Start () {
-	
-	}
+
+    }
     public void day_update()
     {
-        if(ResourceManager.instance.money + money_yield>=0&&
-            ResourceManager.instance.food + food_yield>=0&&
-            ResourceManager.instance.water + water_yield>=0&&
-            ResourceManager.instance.crystal + crystal_yield>=0&&
-            ResourceManager.instance.herb + herb_yield >= 0){
+        resource_yield[0] = food_yield;
+        resource_yield[1] = water_yield;
+        resource_yield[2] = crystal_yield;
+        resource_yield[3] = herb_yield;
 
-            ResourceManager.instance.money += money_yield;
-            ResourceManager.instance.food += food_yield;
-            ResourceManager.instance.water += water_yield;
-            ResourceManager.instance.crystal += crystal_yield;
-            ResourceManager.instance.herb += herb_yield;
+        if (ResourceManager.instance.money+ money_yield >= 0)
+        {
+            bool flag = false;
+            for(int i = 0; i < resource_yield.Length; i++)
+            {
+                if(ResourceManager.instance.resource[i]+ resource_yield[i] < 0)
+                {
+                    flag = true;//no enough resource
+                    break;
+                }
+            }
+            if (!flag)//yeild success!!
+            {
+                ResourceManager.instance.money += money_yield;
+                for (int i = 0; i < resource_yield.Length; i++)
+                {
+                    ResourceManager.instance.resource[i] += resource_yield[i];
+                }
+            }
         }
-
     }
     // Update is called once per frame
     void Update () {
